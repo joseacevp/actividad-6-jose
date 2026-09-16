@@ -1,1 +1,18 @@
-<p>usuario-list works!</p>
+<section>
+  <h2>Usuarios</h2>
+    <!-- 9 vista de la lista de usuarios con signals -->
+  @if (cargando()) {
+    <p>Cargando usuarios...</p>
+  } @else if (error()) {
+    <p role="alert">{{ error() }}</p>
+  } @else {
+    <div>
+      @for (usuario of usuarioList(); track usuario._id) {
+        <article>
+          <h3>{{ usuario.first_name }} {{ usuario.last_name }}</h3>
+          <p>{{ usuario.email }}</p>
+        </article>
+      }
+    </div>
+  }
+</section>
