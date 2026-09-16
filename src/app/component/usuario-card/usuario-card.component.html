@@ -17,7 +17,7 @@
       <!-- 13 envia a detalle de usuario -->
       <a
         class="btn btn-outline-secondary btn-sm"
-        [routerLink]="['/dashboard/usuarios', usuario()._id]"
+        [routerLink]="['/dashboard/detalle', usuario()._id]"
       >
         Ver detalle
       </a>
@@ -28,7 +28,8 @@
       >
         Actualizar
       </a>
-      <button class="btn btn-outline-danger btn-sm" type="button" >Borrar</button>
+      <!-- 15 boton con la funcion de borrar usuario, que se implementara en el componente padre -->
+      <button class="btn btn-outline-danger btn-sm" type="button" (click)="borrarUsuario()">Borrar</button>
     </div>
   </div>
 </article>

@@ -12,4 +12,9 @@ export class UsuarioCardComponent {
 
   //11 creamos un input para recibir el usuario desde el componente padre
   usuario = input.required<IUser>();
+
+  //16 funcion de borrado de usuario que emite un evento al componente padre
+  borrarUsuario() {
+    alert(`Usuario ${this.usuario()._id} borrado`);
+  }
 }

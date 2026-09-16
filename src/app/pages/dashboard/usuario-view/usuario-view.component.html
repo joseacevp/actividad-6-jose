@@ -1,1 +1,46 @@
-<p>usuario-view works!</p>
+<section class="card border-0 shadow-sm">
+  @if (usuario(); as usuarioActual) {
+    <div class="card-body p-4 p-md-5">
+      <div class="row align-items-center g-4 g-lg-5">
+        <div class="col-12 col-lg-6 text-center border-lg-end">
+          <img
+            class="img-fluid rounded-circle border border-4 border-primary shadow-sm"
+            [src]="usuarioActual.image"
+            [alt]="usuarioActual.first_name + ' ' + usuarioActual.last_name"
+            width="320"
+            height="320"
+          />
+        </div>
+
+        <div class="col-12 col-lg-6">
+          <h1 class="display-6 fw-normal mb-4">
+            {{ usuarioActual.first_name }} {{ usuarioActual.last_name }}
+          </h1>
+          <p class="fs-4 mb-4">{{ usuarioActual.username }}</p>
+
+          <dl class="row mb-4">
+            <dt class="col-sm-4">Nombre Usuario:</dt>
+            <dd class="col-sm-8">{{ usuarioActual.username }}</dd>
+            <dt class="col-sm-4">Email:</dt>
+            <dd class="col-sm-8">{{ usuarioActual.email }}</dd>
+          </dl>
+
+          <div class="btn-group" role="group" aria-label="Acciones del usuario">
+            <button class="btn btn-outline-dark" type="button">Eliminar</button>
+            <a
+              class="btn btn-outline-dark"
+              [routerLink]="['/dashboard/update-usuario', usuarioActual._id]"
+            >
+              Actualizar
+            </a>
+            <a class="btn btn-outline-dark" [routerLink]="['/dashboard']"> Volver al listado </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  } @else {
+    <div class="card-body p-5 text-center">
+      <p class="mb-0">Cargando usuario...</p>
+    </div>
+  }
+</section>

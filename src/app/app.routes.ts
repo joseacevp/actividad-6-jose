@@ -15,7 +15,7 @@ export const routes: Routes = [
         children: [
             { path: '', redirectTo: 'usuarios', pathMatch: 'full' },
             { path: 'usuarios', component: UsuarioListComponent },
-            { path: 'usuarios/:_id', component: UsuarioViewComponent },
+            { path: 'detalle/:_id', component: UsuarioViewComponent },
             { path: 'new-usuario', component: UsuarioFormComponent },
             { path: 'update-usuario/:_id', component: UsuarioFormComponent }
         ]
