@@ -1,3 +1,4 @@
+<!-- 12 dibujado de la tarjeta de usuario -->
 <article class="card h-100 border-secondary-subtle shadow-sm">
   <div class="card-body d-flex flex-column align-items-center text-center p-3">
     <img
@@ -13,19 +14,21 @@
     </h3>
 
     <div class="d-flex justify-content-center gap-2 mt-auto w-100">
+      <!-- 13 envia a detalle de usuario -->
       <a
         class="btn btn-outline-secondary btn-sm"
         [routerLink]="['/dashboard/usuarios', usuario()._id]"
       >
         Ver detalle
       </a>
+      <!-- 14 envia a actualizar usuario -->
       <a
         class="btn btn-outline-primary btn-sm"
         [routerLink]="['/dashboard/update-usuario', usuario()._id]"
       >
         Actualizar
       </a>
-      <button class="btn btn-outline-danger btn-sm" type="button">Borrar</button>
+      <button class="btn btn-outline-danger btn-sm" type="button" >Borrar</button>
     </div>
   </div>
 </article>
