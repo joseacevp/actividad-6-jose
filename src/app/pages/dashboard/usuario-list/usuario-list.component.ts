@@ -1,9 +1,10 @@
 import { Component, inject, signal } from '@angular/core';
 import { UsurarioServiceService } from '../../../services/usurario-service.service';
 import { IUser } from '../../../interfaces/iusuario.interface';
+import { UsuarioCardComponent } from '../../../component/usuario-card/usuario-card.component';
 
 @Component({
-  imports: [],
+  imports: [UsuarioCardComponent],
   selector: 'app-usuario-list',
   styleUrl: './usuario-list.component.css',
   templateUrl: './usuario-list.component.html',

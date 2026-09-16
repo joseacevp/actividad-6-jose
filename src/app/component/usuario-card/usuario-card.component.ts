@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+import { IUser } from '../../interfaces/iusuario.interface';
 
 @Component({
   imports: [],
@@ -6,4 +7,8 @@ import { Component } from '@angular/core';
   styleUrl: './usuario-card.component.css',
   templateUrl: './usuario-card.component.html',
 })
-export class UsuarioCardComponent {}
+export class UsuarioCardComponent {
+
+  //11 creamos un input para recibir el usuario desde el componente padre
+  usuario = input.required<IUser>();
+}

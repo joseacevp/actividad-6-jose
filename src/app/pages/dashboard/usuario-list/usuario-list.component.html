@@ -1,6 +1,6 @@
 <section>
   <h2>Usuarios</h2>
-    <!-- 9 vista de la lista de usuarios con signals -->
+  <!-- 9 vista de la lista de usuarios con signals -->
   @if (cargando()) {
     <p>Cargando usuarios...</p>
   } @else if (error()) {
@@ -9,8 +9,8 @@
     <div>
       @for (usuario of usuarioList(); track usuario._id) {
         <article>
-          <h3>{{ usuario.first_name }} {{ usuario.last_name }}</h3>
-          <p>{{ usuario.email }}</p>
+          <!-- 10 pasamos el input de usuario al componente hijo -->
+          <app-usuario-card [usuario]="usuario"></app-usuario-card>
         </article>
       }
     </div>
