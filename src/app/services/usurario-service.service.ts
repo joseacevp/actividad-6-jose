@@ -28,4 +28,12 @@ export class UsurarioServiceService {
     deleteUserById(_id: string | undefined) {
         return firstValueFrom(this.httpClient.delete<IUser>(`${this.baseUrl}/${_id}`));
     }
+
+    insertUser(usuario: IUser) {
+        return firstValueFrom(this.httpClient.post<IUser>(this.baseUrl, usuario));
+    }
+
+    updateUser(usuario: IUser) {
+        return firstValueFrom(this.httpClient.put<IUser>(`${this.baseUrl}/${usuario._id}`, usuario));
+    }
 }

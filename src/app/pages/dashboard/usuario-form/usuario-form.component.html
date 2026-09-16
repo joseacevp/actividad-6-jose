@@ -1,16 +1,20 @@
-<!-- 1 formulario signal -->
+<!-- 1 formulario signal
+detectar si es nuevo o es para actualizar, y mostrar el formulario con los datos del usuario a actualizar
+e
+
+-->
 
 <section class="py-2">
-  <h1 class="h3 text-uppercase fw-normal mb-4">Nuevo Usuario</h1>
+  <h1 class="h3 text-uppercase fw-normal mb-4">{{ title() }}</h1>
 
-  <form class="row g-4" novalidate>
+  <form class="row g-4" novalidate (submit)="getDataForm($event)">
     <div class="col-12">
       <label class="form-label" for="firstName">Nombre Usuario</label>
       <input
         class="form-control"
         id="firstName"
-        name="firstName"
         type="text"
+        [formField]="usuarioFields.first_name"
         placeholder="Introduce nombre de usuario"
       />
     </div>
@@ -20,8 +24,8 @@
       <input
         class="form-control"
         id="lastName"
-        name="lastName"
         type="text"
+        [formField]="usuarioFields.last_name"
         placeholder="Introduce apellido de usuario"
       />
     </div>
@@ -31,8 +35,8 @@
       <input
         class="form-control"
         id="email"
-        name="email"
         type="email"
+        [formField]="usuarioFields.email"
         placeholder="Introduce email del usuario"
       />
     </div>
@@ -42,8 +46,8 @@
       <input
         class="form-control"
         id="image"
-        name="image"
         type="url"
+        [formField]="usuarioFields.image"
         placeholder="Introduce url de foto usuario"
       />
     </div>
