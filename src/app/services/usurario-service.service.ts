@@ -16,7 +16,7 @@ export class UsurarioServiceService {
         const response = await firstValueFrom(
             this.httpClient.get<IUsersResponse>(this.baseUrl)
         );
-
+            //solucion para que los empleados creados o actualizados se mantengan en la lista de usuarios sin necesidad de recargar la página
         return response.results;
     }
 
@@ -26,7 +26,9 @@ export class UsurarioServiceService {
 
     //24 metodo para eliminar un usuario por su id
     deleteUserById(_id: string | undefined) {
-        return firstValueFrom(this.httpClient.delete<IUser>(`${this.baseUrl}/${_id}`));
+        return firstValueFrom(this.httpClient.delete<IUser>(`${this.baseUrl}/${_id}`))
+        //soluciona para que los empleados eliminados se eliminen de la lista de usuarios sin necesidad de recargar la página
+        ;
     }
 
     insertUser(usuario: IUser) {
