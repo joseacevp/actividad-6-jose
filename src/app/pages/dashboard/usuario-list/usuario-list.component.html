@@ -5,8 +5,7 @@
     <p>Cargando usuarios...</p>
   } @else if (error()) {
     <p role="alert">{{ error() }}</p>
-  }
-  @else {
+  } @else {
     <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4">
       @for (usuario of usuarioList(); track usuario._id) {
         <div class="col">

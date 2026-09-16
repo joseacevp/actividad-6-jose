@@ -8,4 +8,4 @@ import { NavDashboardComponent } from '../../shared/nav-dashboard/nav-dashboard.
   styleUrl: './dashboard.component.css',
   templateUrl: './dashboard.component.html',
 })
-export class DashboardComponent {}
+export class DashboardComponent { }

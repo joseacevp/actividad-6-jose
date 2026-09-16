@@ -7,4 +7,4 @@ import { RouterLink } from '@angular/router';
   styleUrl: './nav-dashboard.component.css',
   templateUrl: './nav-dashboard.component.html',
 })
-export class NavDashboardComponent {}
+export class NavDashboardComponent { }
