@@ -5,13 +5,13 @@
     <p>Cargando usuarios...</p>
   } @else if (error()) {
     <p role="alert">{{ error() }}</p>
-  } @else {
-    <div>
+  }
+  @else {
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4">
       @for (usuario of usuarioList(); track usuario._id) {
-        <article>
-          <!-- 10 pasamos el input de usuario al componente hijo -->
+        <div class="col">
           <app-usuario-card [usuario]="usuario"></app-usuario-card>
-        </article>
+        </div>
       }
     </div>
   }
