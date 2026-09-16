@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { IUser } from '../../interfaces/iusuario.interface';
 
@@ -12,9 +12,9 @@ export class UsuarioCardComponent {
 
   //11 creamos un input para recibir el usuario desde el componente padre
   usuario = input.required<IUser>();
+  borrar = output<string>();
 
-  //16 funcion de borrado de usuario que emite un evento al componente padre
-  borrarUsuario() {
-    alert(`Usuario ${this.usuario()._id} borrado`);
+  borrarUsuario(): void {
+    this.borrar.emit(this.usuario()._id);
   }
 }

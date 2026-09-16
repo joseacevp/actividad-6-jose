@@ -1,3 +1,4 @@
+<!-- 21 mostramos el usuario en la vista de detalle usando un alias para la señal -->
 <section class="card border-0 shadow-sm">
   @if (usuario(); as usuarioActual) {
     <div class="card-body p-4 p-md-5">
@@ -26,7 +27,11 @@
           </dl>
 
           <div class="btn-group" role="group" aria-label="Acciones del usuario">
-            <button class="btn btn-outline-dark" type="button">Eliminar</button>
+
+            <!-- 22 funcion para eliminar el usuario, que se implementara en el componente padre -->
+            <button class="btn btn-outline-dark" type="button" 
+            (click)="eliminarUsuario(usuarioActual._id)"
+            [routerLink]="['/dashboard']">Eliminar</button>
             <a
               class="btn btn-outline-dark"
               [routerLink]="['/dashboard/update-usuario', usuarioActual._id]"

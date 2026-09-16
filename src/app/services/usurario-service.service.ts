@@ -24,5 +24,8 @@ export class UsurarioServiceService {
         return firstValueFrom(this.httpClient.get<IUser>(`${this.baseUrl}/${_id}`));
     }
 
-
+    //24 metodo para eliminar un usuario por su id
+    deleteUserById(_id: string | undefined) {
+        return firstValueFrom(this.httpClient.delete<IUser>(`${this.baseUrl}/${_id}`));
+    }
 }

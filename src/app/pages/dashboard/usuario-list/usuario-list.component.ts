@@ -32,4 +32,15 @@ export class UsuarioListComponent {
       this.cargando.set(false);
     }
   }
+
+  async borrarUsuario(_id: string): Promise<void> {
+    try {
+      await this.usuarioService.deleteUserById(_id);
+      this.usuarioList.update((usuarios) =>
+        usuarios.filter((usuario) => usuario._id !== _id)
+      );
+    } catch {
+      this.error.set('No se pudo borrar el usuario. Inténtalo de nuevo.');
+    }
+  }
 }

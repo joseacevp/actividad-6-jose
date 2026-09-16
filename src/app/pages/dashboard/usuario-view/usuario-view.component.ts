@@ -30,4 +30,13 @@ export class UsuarioViewComponent {
       alert('No se pudo cargar el usuario. Inténtalo de nuevo.');
     }
   }
+  //23 función para eliminar el usuario
+  async eliminarUsuario(_id: string): Promise<void> {
+    try {
+      const response = await this.usuarioservice.deleteUserById(_id);
+      alert(`Usuario ${_id} eliminado`);
+    } catch {
+      alert('No se pudo eliminar el usuario. Inténtalo de nuevo.');
+    }
+  }
 }
