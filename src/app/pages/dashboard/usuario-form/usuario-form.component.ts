@@ -1,5 +1,5 @@
 import { Component, computed, inject, input, signal } from '@angular/core';
-import { form, FormField } from '@angular/forms/signals';
+import { email, form, FormField, required } from '@angular/forms/signals';
 import { Router } from '@angular/router';
 import { IUser } from '../../../interfaces/iusuario.interface';
 import { UsurarioServiceService } from '../../../services/usurario-service.service';
@@ -38,7 +38,13 @@ export class UsuarioFormComponent {
   // usuarioForm contiene los datos y usuarioFields
   // permite utilizarlos individualmente en la plantilla.
   // creado a partir del modelo inicial
-  usuarioFields = form(this.usuarioForm);
+  usuarioFields = form(this.usuarioForm, (schemaPath) => {
+    required(schemaPath.first_name, { message: 'El nombre es obligatorio.' });
+    required(schemaPath.last_name, { message: 'El apellido es obligatorio.' });
+    required(schemaPath.email, { message: 'El email es obligatorio.' });
+    email(schemaPath.email, { message: 'Introduce un email válido.' });
+    required(schemaPath.image, { message: 'La imagen es obligatoria.' });
+  });
 
 
   ngOnInit(): void {
@@ -64,6 +70,12 @@ export class UsuarioFormComponent {
   async getDataForm(event: SubmitEvent): Promise<void> {
     event.preventDefault();
     this.error.set('');
+
+    if (this.usuarioFields().invalid()) {
+      this.error.set('Revisa los campos marcados antes de guardar.');
+      return;
+    }
+
     this.guardando.set(true);
 
     // 4 formulario si recibe id llama a actualizar y si no llama nuevo usuario
@@ -90,7 +102,7 @@ export class UsuarioFormComponent {
     } finally {
       this.guardando.set(false);
     }
-    
+
   }
 
 }

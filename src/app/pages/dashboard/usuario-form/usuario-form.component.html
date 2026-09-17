@@ -9,7 +9,7 @@ e
   <h1 class="h3 text-uppercase fw-normal mb-4">{{ title() }}</h1>
 
   <!-- 4 formulario evento submit para recibir los datos del formulario y los envia al ts-->
-  <form class="row g-4" novalidate (submit)="getDataForm($event)">
+  <form class="row g-4" (submit)="getDataForm($event)">
     <div class="col-12">
       <label class="form-label" for="firstName">Nombre Usuario</label>
       <input
@@ -21,6 +21,9 @@ e
         [formField]="usuarioFields.first_name"
         placeholder="Introduce nombre de usuario"
       />
+      @if (usuarioFields.first_name().touched() && usuarioFields.first_name().invalid()) {
+        <div class="invalid-feedback d-block">El nombre es obligatorio.</div>
+      }
     </div>
 
     <div class="col-12">
@@ -32,6 +35,9 @@ e
         [formField]="usuarioFields.last_name"
         placeholder="Introduce apellido de usuario"
       />
+      @if (usuarioFields.last_name().touched() && usuarioFields.last_name().invalid()) {
+        <div class="invalid-feedback d-block">El apellido es obligatorio.</div>
+      }
     </div>
 
     <div class="col-12">
@@ -43,6 +49,9 @@ e
         [formField]="usuarioFields.email"
         placeholder="Introduce email del usuario"
       />
+      @if (usuarioFields.email().touched() && usuarioFields.email().invalid()) {
+        <div class="invalid-feedback d-block">Introduce un email válido y obligatorio.</div>
+      }
     </div>
 
     <div class="col-12">
@@ -54,6 +63,9 @@ e
         [formField]="usuarioFields.image"
         placeholder="Introduce url de foto usuario"
       />
+      @if (usuarioFields.image().touched() && usuarioFields.image().invalid()) {
+        <div class="invalid-feedback d-block">La imagen es obligatoria.</div>
+      }
     </div>
 
     <div class="col-12">
