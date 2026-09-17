@@ -73,10 +73,12 @@ export class UsuarioFormComponent {
 
       if (this._id()) {
         usuarioGuardado = await this.usurarioService.updateUser(this.usuarioForm());
+        console.log(usuarioGuardado)//5 formulario respuesta de la api
       } else {
         usuarioGuardado = await this.usurarioService.insertUser(this.usuarioForm());
+        console.log(usuarioGuardado)//5 formulario respuesta de la api
       }
-
+      //5 formulario respuesta de la api
       window.alert(
         `Usuario ${usuarioGuardado.first_name} ${usuarioGuardado.last_name} guardado correctamente.\nID: ${usuarioGuardado._id}`
       );
@@ -88,6 +90,7 @@ export class UsuarioFormComponent {
     } finally {
       this.guardando.set(false);
     }
+    
   }
 
 }
