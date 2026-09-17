@@ -31,10 +31,18 @@ export class UsuarioViewComponent {
     }
   }
   //23 función para eliminar el usuario
-  async eliminarUsuario(_id: string): Promise<void> {
+  async eliminarUsuario(usuario: IUser): Promise<void> {
+    const nombreUsuario = `${usuario.first_name} ${usuario.last_name}`.trim();
+    const confirmarBorrado = window.confirm(`¿Deseas borrar al usuario ${nombreUsuario}?`);
+
+    if (!confirmarBorrado) {
+      return;
+    }
+
     try {
-      const response = await this.usuarioservice.deleteUserById(_id);
-      alert(`Usuario ${_id} eliminado`);
+      await this.usuarioservice.deleteUserById(usuario._id);
+      alert(`Usuario ${nombreUsuario} eliminado correctamente.\nID: ${usuario._id}`);
+      window.location.href = '/dashboard';
     } catch {
       alert('No se pudo eliminar el usuario. Inténtalo de nuevo.');
     }

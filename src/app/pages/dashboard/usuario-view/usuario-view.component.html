@@ -27,11 +27,14 @@
           </dl>
 
           <div class="btn-group" role="group" aria-label="Acciones del usuario">
-
             <!-- 22 funcion para eliminar el usuario, que se implementara en el componente padre -->
-            <button class="btn btn-outline-dark" type="button" 
-            (click)="eliminarUsuario(usuarioActual._id)"
-            [routerLink]="['/dashboard']">Eliminar</button>
+            <button
+              class="btn btn-outline-dark"
+              type="button"
+              (click)="eliminarUsuario(usuarioActual)"
+            >
+              Eliminar
+            </button>
             <a
               class="btn btn-outline-dark"
               [routerLink]="['/dashboard/update-usuario', usuarioActual._id]"

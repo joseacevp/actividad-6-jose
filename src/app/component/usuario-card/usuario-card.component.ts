@@ -12,9 +12,9 @@ export class UsuarioCardComponent {
 
   //11 creamos un input para recibir el usuario desde el componente padre
   usuario = input.required<IUser>();
-  borrar = output<string>();
+  borrar = output<IUser>();
 
   borrarUsuario(): void {
-    this.borrar.emit(this.usuario()._id);
+    this.borrar.emit(this.usuario());
   }
 }

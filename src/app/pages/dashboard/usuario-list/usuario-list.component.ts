@@ -33,12 +33,20 @@ export class UsuarioListComponent {
     }
   }
 
-  async borrarUsuario(_id: string): Promise<void> {
+  async borrarUsuario(usuario: IUser): Promise<void> {
+    const nombreUsuario = `${usuario.first_name} ${usuario.last_name}`.trim();
+    const confirmarBorrado = window.confirm(`¿Deseas borrar al usuario ${nombreUsuario}?`);
+
+    if (!confirmarBorrado) {
+      return;
+    }
+
     try {
-      await this.usuarioService.deleteUserById(_id);
+      await this.usuarioService.deleteUserById(usuario._id);
       this.usuarioList.update((usuarios) =>
-        usuarios.filter((usuario) => usuario._id !== _id)
+        usuarios.filter((usuarioActual) => usuarioActual._id !== usuario._id)
       );
+      window.alert(`Usuario ${nombreUsuario} eliminado correctamente.\nID: ${usuario._id}`);
     } catch {
       this.error.set('No se pudo borrar el usuario. Inténtalo de nuevo.');
     }
