@@ -69,11 +69,18 @@ export class UsuarioFormComponent {
     // 4 formulario si recibe id llama a actualizar y si no llama nuevo usuario
     // envia el objeto completo al servicio
     try {
+      let usuarioGuardado: IUser;
+
       if (this._id()) {
-        await this.usurarioService.updateUser(this.usuarioForm());
+        usuarioGuardado = await this.usurarioService.updateUser(this.usuarioForm());
       } else {
-        await this.usurarioService.insertUser(this.usuarioForm());
+        usuarioGuardado = await this.usurarioService.insertUser(this.usuarioForm());
       }
+
+      window.alert(
+        `Usuario ${usuarioGuardado.first_name} ${usuarioGuardado.last_name} guardado correctamente.\nID: ${usuarioGuardado._id}`
+      );
+
       // 4 cuando termina llama a la pagina inicio 
       await this.router.navigate(['/dashboard']);
     } catch {
