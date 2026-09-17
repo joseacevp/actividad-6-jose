@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { IUser } from '../../../interfaces/iusuario.interface';
 import { UsurarioServiceService } from '../../../services/usurario-service.service';
 @Component({
+  //5  formulario importamos la libreria formField
   imports: [FormField],
   selector: 'app-usuario-form',
   styleUrl: './usuario-form.component.css',
@@ -13,12 +14,16 @@ export class UsuarioFormComponent {
 
   //2 formulario cogemos el id del usuario a actualizar desde la ruta
   _id = input<string>();
+  //3 formulario cambia el titulo si recibe id o no 
   title = computed(() => this._id() ? 'Actualizar Usuario' : 'Nuevo Usuario');
+
   private readonly usurarioService = inject(UsurarioServiceService);
   private readonly router = inject(Router);
   guardando = signal(false);
   error = signal('');
 
+  //4 formulario inicializamos el usarioForm 
+  //metodo inicial
   usuarioForm = signal<IUser>({
     _id: '',
     id: 0,
@@ -29,7 +34,10 @@ export class UsuarioFormComponent {
     image: '',
     password: '',
   });
-
+  //4 formulario recibe los datos del formulario 
+  // usuarioForm contiene los datos y usuarioFields
+  // permite utilizarlos individualmente en la plantilla.
+  // creado a partir del modelo inicial
   usuarioFields = form(this.usuarioForm);
 
 
@@ -40,27 +48,33 @@ export class UsuarioFormComponent {
     }
   }
 
+  //4 formulario carga el usuario si recibe id 
   private async cargarUsuario(id: string): Promise<void> {
     try {
       const usuario = await this.usurarioService.getUserById(id);
+      //carga el usuario en los campos del formulario 
       this.usuarioForm.set(usuario);
     } catch {
       this.error.set('No se pudo cargar el usuario.');
     }
   }
 
+  // 4 formulario recibe los datos del html con los campos del formulario 
+  // al pulsar guardar se obtien el objeto completo usuarioForm
   async getDataForm(event: SubmitEvent): Promise<void> {
     event.preventDefault();
     this.error.set('');
     this.guardando.set(true);
 
+    // 4 formulario si recibe id llama a actualizar y si no llama nuevo usuario
+    // envia el objeto completo al servicio
     try {
       if (this._id()) {
         await this.usurarioService.updateUser(this.usuarioForm());
       } else {
         await this.usurarioService.insertUser(this.usuarioForm());
       }
-
+      // 4 cuando termina llama a la pagina inicio 
       await this.router.navigate(['/dashboard']);
     } catch {
       this.error.set('No se pudo guardar el usuario. Inténtalo de nuevo.');

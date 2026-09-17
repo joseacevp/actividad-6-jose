@@ -31,10 +31,12 @@ export class UsurarioServiceService {
         ;
     }
 
+    //5 formulario inserta el usuario en la api
     insertUser(usuario: IUser) {
         return firstValueFrom(this.httpClient.post<IUser>(this.baseUrl, usuario));
     }
 
+    //5 formulario actualiza el usuario en la api
     updateUser(usuario: IUser) {
         return firstValueFrom(this.httpClient.put<IUser>(`${this.baseUrl}/${usuario._id}`, usuario));
     }

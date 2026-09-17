@@ -5,8 +5,10 @@ e
 -->
 
 <section class="py-2">
+  <!-- 3 formulario cambia el titulo si recibe id o no  -->
   <h1 class="h3 text-uppercase fw-normal mb-4">{{ title() }}</h1>
 
+  <!-- 4 formulario evento submit para recibir los datos del formulario y los envia al ts-->
   <form class="row g-4" novalidate (submit)="getDataForm($event)">
     <div class="col-12">
       <label class="form-label" for="firstName">Nombre Usuario</label>
@@ -14,6 +16,8 @@ e
         class="form-control"
         id="firstName"
         type="text"
+        /* 5 formulario recibe le dato y lo almacena en formField
+        conectamos cada input con su propiedad en el objeto */
         [formField]="usuarioFields.first_name"
         placeholder="Introduce nombre de usuario"
       />
